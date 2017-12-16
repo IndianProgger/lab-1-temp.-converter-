@@ -15,10 +15,10 @@ printf("\n%.2f %s:\nThis temperature does not exist\n", t, scales[num]);
 return NULL; 
 } 
 else 
-if (Flag == 1) /*Checking if converter have already converted everything we need*/
+if (Fl == 1) /*Checking if converter have already typed entered values back*/
 { 
-Flag = 0; 
-if (FlagA == 0) 
+Fl = 0; 
+if (FlA == 0) /*Checking if converter have made convertion from raw temp. or temp with temp type*/
 printf("\n$ tconvert "); 
 else 
 printf("\n$ tconvert %.2f\n", t); 
@@ -27,19 +27,19 @@ printf("\n$ tconvert %.2f\n", t);
 switch(num) 
 { 
 case 0: /*case when inputed temp is in cel*/
-printf("%.2f C:\n", t); 
-printf("%.2f F:\n", (t * 9.0 / 5.0 + 32.0)); 
-printf("%.2f K:\n\n", (t + min[0])); 
+printf("%.2f :C\n", t); 
+printf("%.2f :F\n", (t * 9.0 / 5.0 + 32.0)); 
+printf("%.2f :K\n\n", (t + min[0])); 
 break; 
 case 1: /*case when inputed temp is in fah*/
-printf("%.2f F:\n", t); 
-printf("%.2f C:\n", ((t - 32.0) * 5.0 / 9.0)); 
-printf("%.2f K:\n\n", ((t + min[1])* 5.0 / 9.0)); 
+printf("%.2f :F\n", t); 
+printf("%.2f :C\n", ((t - 32.0) * 5.0 / 9.0)); 
+printf("%.2f :K\n\n", ((t + min[1])* 5.0 / 9.0)); 
 break; 
 case 2: /*case when inputed temp is in kel*/
-printf("%.2f K:\n", t); 
-printf("%.2f C:\n", (t - min[0])); 
-printf("%.2f F:\n", (t * 9.0 / 5.0 - min[1])); 
+printf("%.2f :K\n", t); 
+printf("%.2f :C\n", (t - min[0])); 
+printf("%.2f :F\n", (t * 9.0 / 5.0 - min[1])); 
 break; 
 } 
 return 0; 
@@ -56,7 +56,7 @@ break;
 } 
 case 2: /*case when inputed data is only temp value*/
 { 
-FlagA = 1; 
+FlA = 1; 
 temp = atof(argv[1]); 
 int i = 0; 
 while (i <= 2) 
@@ -78,14 +78,15 @@ converter(temp, i);
 return 0; 
 } 
 ++i; 
-} 
-FlagA = 1; 
-i = 0; 
+}
+FlA = 1;
+i = 0; /*case when inputed data is temp value and temp type, but type is not recognised*/
+printf("Entered type of temperature is not supported.\n Results for every other supported type: \n");
 while (i <= 2) 
 { 
 converter(temp, i); 
-++i; 
-} 
+++i; 	
+}   
 break; 
 } 
 } 
