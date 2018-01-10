@@ -2,7 +2,7 @@
 #include <stdlib.h> 
 #include <string.h> 
 
-char Flag = 1, FlagA = 0; 
+char Fl = 1, FlA = 0; 
 float temp;
 char *scales[]={"C", "F", "K"}; 
 float min[]={273.15, 459.67, 0.0}; 
