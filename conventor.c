@@ -18,11 +18,11 @@ else
 if (Fl == 1) /*Checking if converter have already typed entered values back*/
 { 
 Fl = 0; 
-if (FlA == 0) /*Checking if converter have made convertion from raw temp. or temp with temp type*/
-printf("\n$ tconvert "); 
+if (FlA == 0) /*Checking if converter have made convertion from raw temp*/
+printf("\n$ tconvert ");
 else 
-printf("\n$ tconvert %.2f\n", t); 
-} 
+printf("\n$ tconvert %.2f\n", t); /*or temp with temp type*/
+} /*here ends the part of code, which is typing data about process user have started and data he have entered*/
 
 switch(num) 
 { 
@@ -70,22 +70,22 @@ case 3: /*case when inputed data is temp value and temp type*/
 { 
 temp = atof(argv[1]); 
 int i=0; 
-while (i <= 2) 
+while (i <= 2) /*checking throught all types of temperature for cases of equalities to the entered type*/
 { 
-if (strcmp(scales[i], argv[2]) == 0) 
+if (strcmp(scales[i], argv[2]) == 0) /*when inputed data is temp value and temp type, and type is recognised*/
 { 
 converter(temp, i); 
 return 0; 
 } 
 ++i; 
 }
-FlA = 1;
+FlA = 1; /
 i = 0; /*case when inputed data is temp value and temp type, but type is not recognised*/
 printf("Entered type of temperature is not supported.\n Results for every other supported type: \n");
 while (i <= 2) 
 { 
 converter(temp, i); 
-++i; 	
+++i;    
 }   
 break; 
 } 
